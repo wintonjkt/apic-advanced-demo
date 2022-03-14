@@ -64,17 +64,17 @@ apim.setvariable('message.body',apim.getvariable('jwt-validate.error-message'));
    
   High Level Steps:
   1. Add CientID (Header X-IBM-Client-Id) /ClientSecret (X-IBM-Client-Secret) to the security definition of API
-  2. Add "Authentication URL" to the list of User Registries on API Manager, Menu Resources --> User Registries , enter "https://thinkibm-services.mybluemix.net/auth"
+  2. Add "Authentication URL" to the list of User Registries on API Manager, Menu Resources --> User Registries --> Create, enter name "AppReg", URL "https://thinkibm-services.mybluemix.net/auth"
   3. Add OAuth Service, Menu Resoures --> OAuth Providers --> Add --> Native OAuth Provider  
      - Name: oauth
      - Title: oauth
      - Gateway Type: Datapower API Gateway
      - Grant types: Resource owner password
      - Client types: Confidential
-  4. Add Scope 
-  5. Enable API Registry on Sandbox Catalog registry setting, select API User Registries and Add App Registry. 
-  6. Add the OAuth Service to the Sandbox Catalog, Sandbox --> Settings --> Oauth Providers
-  7. Add OAuth to the API Security Definition and Security
+     - Add or use default Scope 
+  4. Enable API Registry on Sandbox Catalog registry setting, select API User Registries and Add App Registry. 
+  5. Add the OAuth Service to the Sandbox Catalog, Sandbox --> Settings --> Oauth Providers
+  6. Add OAuth to the API Security Definition and Security
      - Type: [[OAuth2]]
      - Flow: [[Resource owner]]
      - Token URL: keep default [[https://\$(catalog.url)/oauth/oauth2/token]]
