@@ -60,7 +60,7 @@ apim.setvariable('message.body',apim.getvariable('jwt-validate.error-message'));
 
 ## App Connect Integration
   
-## OAuth Authenticatio
+## OAuth Authentication
    
   High Level Steps:
   1. Add CientID/ClientSecret to the security definition of API
