@@ -59,4 +59,21 @@ apim.setvariable('message.body',apim.getvariable('jwt-validate.error-message'));
 ## API Connect Toolkit
 
 ## App Connect Integration
+  
+## OAuth Authenticatio
+   
+  High Level Steps:
+  1. Add CientID/ClientSecret to the security definition of API
+  2. Add "Authentication URL" to the list of User Registries on API Manager, Menu Resources --> User Registries , enter "https://thinkibm-services.mybluemix.net/auth"
+  3. Add OAuth Service, Menu Resoures --> OAuth Providers --> Add --> Native OAuth Provider  
+     - Name: oauth
+     - Title: oauth
+     - Gateway Type: Datapower API Gateway
+     - Grant types: Resource owner password
+     - Client types: Confidential
+  4. Add Scope 
+  5. Enable API Registry on Sandbox Catalog registry setting, select API User Registries and Add App Registry. 
+  6. Add the OAuth Service to the Sandbox Catalog, Sandbox --> Settings --> Oauth Providers
+
+
 
