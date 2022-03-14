@@ -74,6 +74,10 @@ apim.setvariable('message.body',apim.getvariable('jwt-validate.error-message'));
   4. Add Scope 
   5. Enable API Registry on Sandbox Catalog registry setting, select API User Registries and Add App Registry. 
   6. Add the OAuth Service to the Sandbox Catalog, Sandbox --> Settings --> Oauth Providers
+  7. Add OAuth to the API Security Definition and Security
+     - Type: [[OAuth2]]
+     - Flow: [[Resource owner]]
+     - Token URL: keep default [[https://\$(catalog.url)/oauth/oauth2/token]]
 
 
 
