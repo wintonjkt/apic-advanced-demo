@@ -63,7 +63,7 @@ apim.setvariable('message.body',apim.getvariable('jwt-validate.error-message'));
 ## OAuth Authentication
    
   High Level Steps:
-  1. Add CientID/ClientSecret to the security definition of API
+  1. Add CientID (Header X-IBM-Client-Id) /ClientSecret (X-IBM-Client-Secret) to the security definition of API
   2. Add "Authentication URL" to the list of User Registries on API Manager, Menu Resources --> User Registries , enter "https://thinkibm-services.mybluemix.net/auth"
   3. Add OAuth Service, Menu Resoures --> OAuth Providers --> Add --> Native OAuth Provider  
      - Name: oauth
