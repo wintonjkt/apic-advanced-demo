@@ -132,3 +132,62 @@ Click Configuration > System > IBM API Connect Billing.
    - Module mapping screen for APIC Monetization Stripe Integration module
 Click Configuration > System > IBM APIC Stripe Integration, and enter the same Stripe test API credentials that you entered for the My Stripe Billing integration resource 
   7. Download https://www.ibm.com/docs/en/SSMNED_v10/com.ibm.apic.apionprem.doc/findbranch_v6.txt --> rename to YAML --> Create new API --> Create new Product --> Add Billing Integration --> Publish the product
+  
+## Create API from Scratch
+  
+  High Level Steps:  
+  1. Create new OpenAPI, with key fields  
+     - Base Path: /financing
+     - Definition: paymentAmount, type: Object
+       - Properties: paymentAmount, type: float, Example: 199.99
+     - Paths: /calculate (final path /financing/calculate)
+       - Operations: GET
+         - Parameters: amount (query, float), duration (query, int 32), rate (query, float)
+         - Response: 200
+     - Target Services: Add Web Services --> Enter WSDL from https://integrationsuperhero.github.io/techcon2020/APICDevJam/resources/calculate.wsdl  
+  2. Go to Assembly, remove Invoke
+  3. Drag and drop financing Web Service Operations
+  4. Edit /financing input --> + GET Calculate operation, map
+  5. Edit /financing output --> + GET /calculate, map
+  6. Add new API Logistics from https://integrationsuperhero.github.io/techcon2020/APICDevJam/resources/logistics.yaml
+  7. Go to Activity Log --> Content: payload
+  8. Go to Assembly of Logistics API --> Add Switch
+     - case 0: shipping.calculate
+     - case 1: get.stores
+  9. shipping.calc --> Title: invoke_xyz --> add invoke: URL=$(shipping_svc_url)?company=xyz&from_zip=90210&to_zip={zip}, stop on error: unchecked, response object variable: xyz_response
+  10. Clone invoke_xyz, edit, assign fields:
+      - [[Title: invoke_cek]]
+      - [[URL: \$(shipping_svc_url)?company=cek&from_zip=90210&to_zip= ]]
+      - [[Response object variable: cek_response]]  
+  11. Add map policy after invoke_cek
+      - Add input:
+        [[Context variable: xyz_response.body]]
+        [[Name: xyz]]
+        [[Content type: application/json]]
+        [[Definition: #/definitions/xyz_shipping_rsp]]
+      - Add another input:
+        [[Context variable: cek_response.body]]
+        [[Name:cek]]
+        [[Content type: application/json]]
+        [[Definition: #/definitions/cek_shipping_rsp]]
+  12. Map the 2 inputs
+  13. get.stores --> Add invoke
+      [[Title: invoke_google_geolocate  ]]
+      [[URL: https://maps.googleapis.com/maps/api/geocode/json?&address=]]
+      [[Stop on error: unchecked ]]
+      [[Response object variable (scroll to the bottom): google_geocode_response]]  
+  14. Add gateway script
+```
+// Save the Google Geocode response body to variable
+var mapsApiRsp = apim.getvariable('google_geocode_response.body');
+
+// Get location attributes from geocode response body
+var location = mapsApiRsp.results[0].geometry.location;
+
+// Set up the response data object, concat the latitude and longitude
+var rspObj = {"google_maps_link": "https://www.google.com/maps?q=" + location.lat + "," + location.lng};
+
+// Save the output     
+apim.setvariable('message.body', rspObj)
+```
+  15. Save and test
