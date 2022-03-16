@@ -242,16 +242,10 @@ apim.setvariable('message.body',apim.getvariable('jwt-validate.error-message'));
 ```
   14. Run the application
 ```
+  npm install
   npm start
 ```  
-  In case of error
-```
-  sudo npm cache clear --force
-  npm install update-package-locks
-  npm run update-package-locks
-  npm ci 
-  npm run build
-```  
+
 ## App Connect Integration
   
 ## OAuth Authentication
