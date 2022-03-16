@@ -115,5 +115,19 @@ apim.setvariable('message.body',apim.getvariable('jwt-validate.error-message'));
      - Flow: [[Resource owner]]
      - Token URL: keep default [[https://\$(catalog.url)/oauth/oauth2/token]]
 
-
-
+## API Monetization
+  
+  High Level Steps:
+  0. If you don't have a Stripe account, you can create one here: https://dashboard.stripe.com/register. Refer to your Stripe dashboard to get your test API keys: see https://dashboard.stripe.com/apikeys
+  1. Open Resources --> Billing --> Add.
+  2. Enter a Title for your billing integration, for example My Stripe Billing
+  3. Enter the test Publishable key and Secret key for your Stripe account. 
+  4. Add your billing integration resource to a catalog --> Manage --> Billing, and then click Edit.
+  5. Enable the Stripe payment method in the Developer Portal, Log in to the Developer Portal as an administrator --> Click Manage --> click Extend --> Enter Stripe into the search filter, select APIC Monetization Stripe Integration, and click Enable 
+     Install screen for APIC Monetization Stripe Integration module
+  6. The default settings for the APIC Monetization Stripe Integration module are now enabled, and you now need to edit those settings.
+Click Configuration > System > IBM API Connect Billing.
+   - Change the billing provider module mapping drop-down option to be the newly enabled APIC Monetization Stripe Integration (ibm_stripe_payment_method), and click Save configuration.
+   - Module mapping screen for APIC Monetization Stripe Integration module
+Click Configuration > System > IBM APIC Stripe Integration, and enter the same Stripe test API credentials that you entered for the My Stripe Billing integration resource 
+  7. Download https://www.ibm.com/docs/en/SSMNED_v10/com.ibm.apic.apionprem.doc/findbranch_v6.txt --> rename to YAML --> Create new API --> Create new Product --> Add Billing Integration --> Publish the product
