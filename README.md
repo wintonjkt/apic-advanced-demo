@@ -101,9 +101,13 @@ apim.setvariable('message.body',apim.getvariable('jwt-validate.error-message'));
   4. Download the designer credentials from API Manager
   5. Create the environment variable APIC_DESIGNER_CREDENTIALS with value the path to designer_credentials.json 
      Ubuntu, edit /etc/environment, and run "source /etc/environment"
-  6. Create API using Loopback from toolkit
+  6. Install NodeJS
 ```
-  apic create:api
+  npm install npm --global
+```  
+  7. Create API using Loopback from toolkit
+```
+  apic lb4
 ```
 
 ## App Connect Integration
