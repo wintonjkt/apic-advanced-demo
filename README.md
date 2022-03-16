@@ -103,6 +103,7 @@ apim.setvariable('message.body',apim.getvariable('jwt-validate.error-message'));
      Ubuntu, edit /etc/environment, and run "source /etc/environment"
   6. Install NodeJS
 ```
+  apt-get install -y npm
   npm install npm --global
 ```  
   7. Create API using Loopback from toolkit
