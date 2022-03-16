@@ -148,7 +148,7 @@ Click Configuration > System > IBM APIC Stripe Integration, and enter the same S
   2. Go to Assembly, remove Invoke
   3. Drag and drop financing Web Service Operations
   4. Edit /financing input --> + GET Calculate operation, map
-  5. Edit /financing output --> + GET /calculate, map
+  5. Edit /financing output --> + GET /calculate, assign to #definition/paymentAmount, map
   6. Add new API Logistics from https://integrationsuperhero.github.io/techcon2020/APICDevJam/resources/logistics.yaml
   7. Go to Activity Log --> Content: payload
   8. Go to Assembly of Logistics API --> Add Switch
