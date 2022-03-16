@@ -117,8 +117,8 @@ apim.setvariable('message.body',apim.getvariable('jwt-validate.error-message'));
 
 ## API Monetization
   
-  High Level Steps:
-  0. If you don't have a Stripe account, you can create one here: https://dashboard.stripe.com/register. Refer to your Stripe dashboard to get your test API keys: see https://dashboard.stripe.com/apikeys
+  High Level Steps:  
+  0. If you don't have a Stripe account, you can create one here: https://dashboard.stripe.com/register. Refer to your Stripe dashboard to get your test API keys: see https://dashboard.stripe.com/apikeys  
   1. Open Resources --> Billing --> Add.
   2. Enter a Title for your billing integration, for example My Stripe Billing
   3. Enter the test Publishable key and Secret key for your Stripe account. 
