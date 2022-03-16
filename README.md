@@ -113,24 +113,137 @@ apim.setvariable('message.body',apim.getvariable('jwt-validate.error-message'));
 ```  
   8. Create API using Loopback from toolkit
 ```
-$ lb4 app  
-? Project name: todo-list  
-? Project description: A todo list API made with LoopBack 4.  
-? Project root directory: (todo-list)  
-? Application class name: (TodoListApplication)  
-? Select features to enable in the project:  
-❯◉ Enable eslint: add a linter with pre-configured lint rules  
- ◉ Enable prettier: install prettier to format code conforming to rules  
- ◉ Enable mocha: install mocha to run tests  
- ◉ Enable loopbackBuild: use @loopback/build helpers (e.g. lb-eslint)  
- ◉ Enable vscode: add VSCode config files  
- ◉ Enable docker: include Dockerfile and .dockerignore  
- ◉ Enable repositories: include repository imports and RepositoryMixin  
- ◉ Enable services: include service-proxy imports and ServiceMixin  
- # npm will install dependencies now  
- Application todo-list was created in todo-list.  
+ apic lb4 app  
+  ? Project name: todo-list  
+  ? Project description: A todo list API made with LoopBack 4.  
+  ? Project root directory: (todo-list)  
+  ? Application class name: (TodoListApplication)  
+  ? Select features to enable in the project:  
+  ❯◉ Enable eslint: add a linter with pre-configured lint rules  
+   ◉ Enable prettier: install prettier to format code conforming to rules  
+   ◉ Enable mocha: install mocha to run tests  
+   ◉ Enable loopbackBuild: use @loopback/build helpers (e.g. lb-eslint)  
+   ◉ Enable vscode: add VSCode config files  
+   ◉ Enable docker: include Dockerfile and .dockerignore  
+   ◉ Enable repositories: include repository imports and RepositoryMixin  
+   ◉ Enable services: include service-proxy imports and ServiceMixin  
+   # npm will install dependencies now  
+   Application todo-list was created in todo-list.  
 ```
-  9. 
+  9. Create lb4 model
+```
+  apic lb4 model
+  ? Model class name: todo
+  ? Please select the model base class: Entity (A persisted model with an ID)
+  ? Allow additional (free-form) properties? No
+  
+  Let's add a property to Todo
+  Enter an empty property name when done
+  
+  ? Enter the property name: id
+  ? Property type: number
+  ? Is id the ID property? Yes
+  ? Is it required?: No
+  ? Is id generated automatically? Yes
+  ? Default value [leave blank for none]:
+  
+  Let's add another property to Todo
+  Enter an empty property name when done
+  
+  ? Enter the property name: title
+  ? Property type: string
+  ? Is it required?: Yes
+  ? Default value [leave blank for none]:
+  
+  Let's add another property to Todo
+  Enter an empty property name when done
+  
+  ? Enter the property name: desc
+  ? Property type: string
+  ? Is it required?: No
+  ? Default value [leave blank for none]:
+  
+  Let's add another property to Todo
+  Enter an empty property name when done
+  
+  ? Enter the property name: isComplete
+  ? Property type: boolean
+  ? Is it required?: No
+  ? Default value [leave blank for none]:
+  
+  Let's add another property to Todo
+  Enter an empty property name when done
+  
+  ? Enter the property name:
+  
+   create src/models/todo.model.ts
+   update src/models/index.ts
+
+  Model todo was created in src/models/
+```  
+  10. Create lb4 datasource
+```
+  apic lb4 datasource
+  ? Datasource name: db
+  ? Select the connector for db: In-memory db (supported by StrongLoop)
+  ? window.localStorage key to use for persistence (browser only):
+  ? Full path to file for persistence (server only): ./data/db.json
+  
+    create src/datasources/db.datasource.json
+    create src/datasources/db.datasource.ts
+    update src/datasources/index.ts
+  
+  Datasource db was created in src/datasources/
+```  
+  11. Create db.json file for the in memory db content
+```
+  {
+  "ids": {
+    "Todo": 5
+  },
+  "models": {
+    "Todo": {
+      "1": "{\"title\":\"Take over the galaxy\",\"desc\":\"MWAHAHAHAHAHAHAHAHAHAHAHAHAMWAHAHAHAHAHAHAHAHAHAHAHAHA\",\"id\":1}",
+      "2": "{\"title\":\"destroy alderaan\",\"desc\":\"Make sure there are no survivors left!\",\"id\":2}",
+      "3": "{\"title\":\"play space invaders\",\"desc\":\"Become the very best!\",\"id\":3}",
+      "4": "{\"title\":\"crush rebel scum\",\"desc\":\"Every.Last.One.\",\"id\":4}"
+    }
+  }
+}
+```  
+  12. Create Repository
+```
+  apic lb4 repository
+  ? Please select the datasource DbDatasource
+  ? Select the model(s) you want to generate a repository Todo
+  ? Please select the repository base class DefaultCrudRepository (Legacy juggler bridge)
+     create src/repositories/todo.repository.ts
+     update src/repositories/index.ts
+
+  Repository TodoRepository was created in src/repositories/
+```
+  13. Create lb4 controller
+```
+  apic lb4 controller 
+  ? Controller class name: todo
+  Controller Todo will be created in src/controllers/todo.controller.ts
+  
+  ? What kind of controller would you like to generate? REST Controller with CRUD functions
+  ? What is the name of the model to use with this CRUD repository? Todo
+  ? What is the name of your CRUD repository? TodoRepository
+  ? What is the name of ID property? id
+  ? What is the type of your ID? number
+  ? Is the id omitted when creating a new instance? Yes
+  ? What is the base HTTP path name of the CRUD operations? /todos
+     create src/controllers/todo.controller.ts
+     update src/controllers/index.ts
+  
+  Controller Todo was created in src/controllers/
+```
+  14. Run the application
+```
+  npm start
+```  
 ## App Connect Integration
   
 ## OAuth Authentication
