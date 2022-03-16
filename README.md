@@ -55,6 +55,42 @@ apim.setvariable('message.body',apim.getvariable('jwt-validate.error-message'));
   
 
 ## GraphQL Proxy
+  
+  High Level Steps:
+  1. Create new API with Title: accounts and GraphQL server URL: https://graphql-test-server.us-east.cf.appdomain.cloud/accounts/graphql, activate ClientID, ClientSecret
+     GraphQL Schema editor displays Type and Weight information. The weighting factor is used when calculating the type cost for a request to the GraphQL API. For example, a field that requires extensive CPU or memory use on the server to retrieve its value would be given a higher cost.
+  2. Select Query to review the warning details for this type. In addition to the warning details, the Warning window gives an option to fix the warning by apply the limits. 
+  3. Publish and test with the following message
+```
+  {
+  accounts(limit: 2) {
+    name {
+      first
+      last
+    }
+  }
+}
+```  
+  This message will be rejected due to restricted query on creditCard
+```
+  {
+  accounts(limit: 2) {
+    name {
+      first
+      last
+    }
+    shippingAddress {
+      building
+      street
+    }
+  }
+  creditCard {
+    number
+    expirationDate
+  }
+}
+```
+  
 
 ## API Connect Toolkit
 
