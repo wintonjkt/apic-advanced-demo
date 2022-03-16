@@ -93,6 +93,18 @@ apim.setvariable('message.body',apim.getvariable('jwt-validate.error-message'));
   
 
 ## API Connect Toolkit
+  
+  High Level Steps:  
+  1. Install toolkit+cli+designer from API Manager and extract it, copy the apic to /usr/local/bin
+  2. Download the toolkit credentials from API Manager
+  3. apic client-creds:set $(pwd)/credentials.json
+  4. Download the designer credentials from API Manager
+  5. Create the environment variable APIC_DESIGNER_CREDENTIALS with value the path to designer_credentials.json 
+     Ubuntu, edit /etc/environment, and run "source /etc/environment"
+  6. Create API using Loopback from toolkit
+```
+  apic create:api
+```
 
 ## App Connect Integration
   
