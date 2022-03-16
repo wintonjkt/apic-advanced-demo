@@ -103,7 +103,8 @@ apim.setvariable('message.body',apim.getvariable('jwt-validate.error-message'));
      Ubuntu, edit /etc/environment, and run "source /etc/environment"
   6. Install NodeJS
 ```
-  apt-get install -y npm
+  curl -fsSL https://deb.nodesource.com/setup_17.x | sudo -E bash -
+  sudo apt-get install -y nodejscurl -fsSL https://deb.nodesource.com/setup_17.x | sudo -E bash -
   npm install npm --global
 ```  
   7. Install Loopback
@@ -112,9 +113,24 @@ apim.setvariable('message.body',apim.getvariable('jwt-validate.error-message'));
 ```  
   8. Create API using Loopback from toolkit
 ```
-  apic lb4
+$ lb4 app  
+? Project name: todo-list  
+? Project description: A todo list API made with LoopBack 4.  
+? Project root directory: (todo-list)  
+? Application class name: (TodoListApplication)  
+? Select features to enable in the project:  
+❯◉ Enable eslint: add a linter with pre-configured lint rules  
+ ◉ Enable prettier: install prettier to format code conforming to rules  
+ ◉ Enable mocha: install mocha to run tests  
+ ◉ Enable loopbackBuild: use @loopback/build helpers (e.g. lb-eslint)  
+ ◉ Enable vscode: add VSCode config files  
+ ◉ Enable docker: include Dockerfile and .dockerignore  
+ ◉ Enable repositories: include repository imports and RepositoryMixin  
+ ◉ Enable services: include service-proxy imports and ServiceMixin  
+ # npm will install dependencies now  
+ Application todo-list was created in todo-list.  
 ```
-
+  9. 
 ## App Connect Integration
   
 ## OAuth Authentication
