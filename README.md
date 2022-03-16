@@ -143,7 +143,7 @@ Click Configuration > System > IBM APIC Stripe Integration, and enter the same S
      - Paths: /calculate (final path /financing/calculate)
        - Operations: GET
          - Parameters: amount (query, float), duration (query, int 32), rate (query, float)
-         - Response: 200
+         - Response: 200 --> add schema: paymentAmount
      - Target Services: Add Web Services --> Enter WSDL from https://integrationsuperhero.github.io/techcon2020/APICDevJam/resources/calculate.wsdl  
   2. Go to Assembly, remove Invoke
   3. Drag and drop financing Web Service Operations
