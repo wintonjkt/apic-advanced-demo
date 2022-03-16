@@ -106,7 +106,11 @@ apim.setvariable('message.body',apim.getvariable('jwt-validate.error-message'));
   apt-get install -y npm
   npm install npm --global
 ```  
-  7. Create API using Loopback from toolkit
+  7. Install Loopback
+```
+  npm i -g @loopback/cli
+```  
+  8. Create API using Loopback from toolkit
 ```
   apic lb4
 ```
