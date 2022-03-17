@@ -1,7 +1,7 @@
 # IBM API Connect Advanced Demo
 
 API Sample Endpoints:  
-https://apictutorials.mybluemix.net/branches
+https://apictutorials.mybluemix.net/branches  
 https://apic-pot-inventory-api.mybluemix.net/api/items  
   
 ## Sign and verify API with JWT
