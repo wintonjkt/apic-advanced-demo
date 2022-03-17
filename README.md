@@ -1,9 +1,9 @@
 # IBM API Connect Advanced Demo
 
-API Sample Endpoints:
-https://www.ibm.com/links?url=https%3A%2F%2Fapictutorials.mybluemix.net%2Fbranches
-https://apic-pot-inventory-api.mybluemix.net/api/items
-
+API Sample Endpoints:  
+https://www.ibm.com/links?url=https%3A%2F%2Fapictutorials.mybluemix.net%2Fbranches  
+https://apic-pot-inventory-api.mybluemix.net/api/items  
+  
 ## Sign and verify API with JWT
 
 ### Generate JWT
