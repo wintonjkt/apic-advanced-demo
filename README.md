@@ -248,6 +248,9 @@ apim.setvariable('message.body',apim.getvariable('jwt-validate.error-message'));
 
 ## App Connect Integration
   
+  High Level Steps:
+  1. Create 
+  
 ## OAuth Authentication
    
   High Level Steps:
